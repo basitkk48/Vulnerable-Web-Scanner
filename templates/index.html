@@ -1,0 +1,27 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <div class="card">
+    <h2 style="margin:0 0 8px;">Welcome</h2>
+    <p class="small" style="margin:0;">
+      This app is intentionally vulnerable for practicing web security testing. Use Burp Suite and document findings in <code>reports/pentest_report.md</code>.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;">Quick Test Payloads</h3>
+    <pre>
+SQLi Login:
+  username: admin' --
+  password: anything
+
+Reflected XSS:
+  /search?q=&lt;script&gt;alert(1)&lt;/script&gt;
+
+Stored XSS:
+  Post a comment: &lt;img src=x onerror=alert(1)&gt;
+
+IDOR:
+  /profile?id=2  (view user2)
+    </pre>
+  </div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <div class="card">
+    <h2 style="margin:0 0 8px;">Dashboard</h2>
+    <p class="small">Logged in as: <b>{{ session.get("user") }}</b></p>
+    <p class="small">Try IDOR by changing the profile id: <code>/profile?id=2</code></p>
+  </div>
+{% endblock %}

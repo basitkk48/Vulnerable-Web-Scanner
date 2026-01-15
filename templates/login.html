@@ -1,0 +1,25 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <div class="card">
+    <h2 style="margin:0 0 8px;">Login (Intentionally Vulnerable to SQLi)</h2>
+    <p class="small">This login uses unsafe string concatenation in SQL.</p>
+    <form method="post">
+      <label>Username</label>
+      <input class="input" name="username" placeholder="admin" />
+      <label>Password</label>
+      <input class="input" name="password" placeholder="admin123" type="password" />
+      <div style="margin-top:12px;">
+        <button class="btn" type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;">Demo accounts</h3>
+    <pre>
+admin / admin123
+user1 / pass123
+user2 / pass123
+    </pre>
+  </div>
+{% endblock %}

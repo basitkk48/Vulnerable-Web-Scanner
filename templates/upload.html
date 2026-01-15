@@ -1,0 +1,30 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <div class="card">
+    <h2 style="margin:0 0 8px;">Upload (Insecure)</h2>
+    <p class="small">
+      This upload uses weak validation (extension-based only) and stores files in a public folder.
+      Do not run this on a public server.
+    </p>
+    <form method="post" enctype="multipart/form-data">
+      <label>Select file</label>
+      <input class="input" type="file" name="file" />
+      <div style="margin-top:12px;">
+        <button class="btn" type="submit">Upload</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;">Uploaded files</h3>
+    {% if files %}
+      <ul>
+        {% for f in files %}
+          <li><a href="{{ url_for('static', filename='uploads/' ~ f) }}" target="_blank">{{ f }}</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="small">No uploads yet.</div>
+    {% endif %}
+  </div>
+{% endblock %}

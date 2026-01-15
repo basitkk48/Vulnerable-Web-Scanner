@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title or "VulnLab" }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>
+          <div style="font-weight:800; font-size:1.25rem;">VulnLab</div>
+          <div class="small">Intentionally vulnerable web app (local lab only)</div>
+        </div>
+        <div class="badge">OWASP Practice</div>
+      </div>
+      <hr />
+      <div class="nav">
+        <a class="btn" href="{{ url_for('index') }}">Home</a>
+        <a class="btn" href="{{ url_for('login') }}">Login (SQLi)</a>
+        <a class="btn" href="{{ url_for('search') }}">Search (XSS)</a>
+        <a class="btn" href="{{ url_for('comments') }}">Comments (Stored XSS)</a>
+        <a class="btn" href="{{ url_for('upload') }}">Upload (Insecure)</a>
+        <a class="btn" href="{{ url_for('profile') }}?id=1">Profile (IDOR)</a>
+        {% if session.get("user") %}
+          <a class="btn" href="{{ url_for('dashboard') }}">Dashboard</a>
+          <a class="btn" href="{{ url_for('logout') }}">Logout</a>
+        {% endif %}
+      </div>
+      {% with msgs = get_flashed_messages() %}
+        {% if msgs %}
+          <div class="card" style="background:#0e1630;">
+            {% for m in msgs %}<div>• {{ m }}</div>{% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+</body>
+</html>

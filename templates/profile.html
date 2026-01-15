@@ -1,0 +1,18 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <div class="card">
+    <h2 style="margin:0 0 8px;">Profile (IDOR)</h2>
+    <p class="small">Try changing the id in the URL: <code>/profile?id=2</code></p>
+    {% if user %}
+      <pre>
+id: {{ user["id"] }}
+username: {{ user["username"] }}
+email: {{ user["email"] }}
+role: {{ user["role"] }}
+      </pre>
+      <div class="small">⚠️ There is no authorization check here (intentionally).</div>
+    {% else %}
+      <div class="small">User not found.</div>
+    {% endif %}
+  </div>
+{% endblock %}

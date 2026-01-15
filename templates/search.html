@@ -1,0 +1,24 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <div class="card">
+    <h2 style="margin:0 0 8px;">Search (Reflected XSS)</h2>
+    <p class="small">This page reflects the query directly into HTML without escaping.</p>
+    <form method="get">
+      <label>Query</label>
+      <input class="input" name="q" value="{{ q or '' }}" placeholder="try: <script>alert(1)</script>" />
+      <div style="margin-top:12px;">
+        <button class="btn" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+
+  {% if q is not none %}
+  <div class="card">
+    <h3 style="margin:0 0 8px;">Results for:</h3>
+    <!-- INTENTIONALLY UNSAFE OUTPUT (XSS) -->
+    <div>{{ unsafe_q|safe }}</div>
+    <hr />
+    <div class="small">No real results — this is only for testing XSS reflection.</div>
+  </div>
+  {% endif %}
+{% endblock %}

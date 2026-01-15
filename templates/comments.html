@@ -1,0 +1,30 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <div class="card">
+    <h2 style="margin:0 0 8px;">Comments (Stored XSS)</h2>
+    <p class="small">Comments are stored in DB and displayed unsafely.</p>
+    <form method="post">
+      <label>Name</label>
+      <input class="input" name="name" placeholder="Your name" />
+      <label>Comment</label>
+      <input class="input" name="comment" placeholder='try: <img src=x onerror=alert(1)>' />
+      <div style="margin-top:12px;">
+        <button class="btn" type="submit">Post</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;">Latest comments</h3>
+    {% for c in comments %}
+      <div style="padding:10px 0; border-bottom:1px solid #1f2a44;">
+        <div class="small"><b>{{ c["name"] }}</b> • {{ c["created_at"] }}</div>
+        <!-- INTENTIONALLY UNSAFE OUTPUT (Stored XSS) -->
+        <div>{{ c["comment"]|safe }}</div>
+      </div>
+    {% endfor %}
+    {% if not comments %}
+      <div class="small">No comments yet.</div>
+    {% endif %}
+  </div>
+{% endblock %}
