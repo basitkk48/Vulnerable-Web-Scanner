@@ -212,8 +212,7 @@ This project is ideal for:
 
 | Name                      | LinkedIn                                                  | GitHub                                        |
 | ------------------------- | --------------------------------------------------------- | --------------------------------------------- |
-| Qazi Muhammad Mustafa Ali | 🔗 [https://www.linkedin.com/in/mustafa-ali-7b2a34338/) | 🐙 [https://github.com/Qmma52) |
-| Muhammad Hamza Kamran     | 🔗 [https://www.linkedin.com/in/hamza-kamran-271872297/) | 🐙 [https://github.com/Hamza-hani) |
+| Abdul Basit    | 🔗 [https://www.linkedin.com/in/abdul-basit-kk-554012309/) | 🐙 [https://github.com/basitkk48) |
 
 
 > 👉 Replace links with your actual profiles.
